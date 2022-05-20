@@ -75,6 +75,10 @@ int main(){
     // Functions with pointers
     int star = 10;
     starPrint(&star);
+
+    // Constant - Pointers
+    char string[] = "print characters";
+    printCharacters(string);
 }
 void starPrint(int *number){
     for(int i=1;i<=*number;i++){
@@ -97,5 +101,10 @@ void starPrint(int *number){
                 }
             }
         }
+    }
+}
+void printCharacters(const char *sPtr){
+    while(*sPtr != '\0'){
+        printf("%c",*sPtr++);
     }
 }
