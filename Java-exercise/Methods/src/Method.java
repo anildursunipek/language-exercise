@@ -7,7 +7,7 @@ public class Method {
         Method m = new Method(); // Yeni bir nesne olusturuldu
         m.findNumber(array,4); // Nesnenin olusturuldugu sınıftaki metod kullanildi
     }
-    public int findNumber(int []array,int number){
+    public static void findNumber(int []array,int number){
         boolean flag = false;
         for(int num : array){
             if(number == num){
@@ -16,11 +16,9 @@ public class Method {
         }
         if(flag){
             System.out.println("Number found");
-            return 1;
         }
         else{
             System.out.println("Number not found");
-            return 0;
         }
     }
 }
