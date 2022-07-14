@@ -30,5 +30,10 @@ public class Main {
         // Disaridan bu ozelliklere erisim olmaz
         // Eger disaridan bu ozellikleri degistirmeden erismek istersek yada belli kosullarda degistirmek istersek getter ve setter'ları kullanmamiz gerekir
 
+        // Constructor -> Yapıcı metod
+        Product product2 = new Product(2, "TV", "LG TV", 17000, 5);
+        System.out.println("Product2 code -> " + product2.getKod());
+        // method overloading: Ayni amaca hizmet eden 2 farkli ayni isim altinda fonkisyon yazabiliriz. Kullanim yerine gore ikisi de kullanilabilir
+        // aynı isimde olmasi bir sorun arz etmez girilen parametre sayisina ve turune gore farklilik gosterebilirler
     }
 }
