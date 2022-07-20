@@ -5,11 +5,13 @@ public class AccountManager {
     public void deposit(int amount){ // Para yatirma islemi
         balance += amount;
     }
-    public void withdraw(int amount) throws Exception{ // Para cekme islemi
+    public void withdraw(int amount) throws BalanceInsufficientException{ // Para cekme islemi
         if(balance >= amount){
             balance -= amount;
         }else{
-            throw new Exception("Insufficient account balance");
+            // throw new Exception("Insufficient account balance");
+            // Custom Exception
+            throw new BalanceInsufficientException("Insufficient account balance");
         }
     }
     public double getBalance(){
