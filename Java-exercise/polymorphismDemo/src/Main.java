@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         // Polymorphism: Cok bicimlilik
-        // Overwriting ve overloading gibi metodlar kullanabiliriz
-        // Overwriting: Bir class'in baska bir class'dan miras aldigi metodu degistirerek tamamen yeni bir metod yazma islemi
+        // Overriting ve overloading gibi metodlar kullanabiliriz
+        // Overriting: Bir class'in baska bir class'dan miras aldigi metodu degistirerek tamamen yeni bir metod yazma islemi
         // DatabaseLogger logger = new DatabaseLogger();
         // logger.Log("Log message");
 
