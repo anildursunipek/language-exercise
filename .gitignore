@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 /Java-exercise/swingDemo/nbproject/private/
 /Java-exercise/swingDemo/jListDemo/nbproject/private/
+/Java-exercise/swingDemo/jTableWithMysql/nbproject/private/
