@@ -63,3 +63,9 @@
     opacity: 1;
     pointer-events: auto;
 }
+
+.quiz_box footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

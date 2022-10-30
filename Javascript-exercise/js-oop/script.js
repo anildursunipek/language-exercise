@@ -42,6 +42,7 @@ document.querySelector(".btn-start").addEventListener("click", function(){
         document.querySelector(".quiz_box").classList.add("active");
         // console.log(listQuestion(quiz.getQuestion()));
         listQuestion(quiz.getQuestion(), quiz.questionIndex);
+        showQuestionIndex(quiz.questionIndex + 1, quiz.questions.length);
 });
 
 document.querySelector(".next-btn").addEventListener("click",function(){
@@ -49,6 +50,7 @@ document.querySelector(".next-btn").addEventListener("click",function(){
         quiz.questionIndex += 1;
         listQuestion(quiz.getQuestion(), quiz.questionIndex);
         next_btn.classList.remove("show");   
+        showQuestionIndex(quiz.questionIndex + 1, quiz.questions.length);
     }else{
         alert("Quiz finished!!!")
     }
@@ -93,4 +95,9 @@ function optionSelected(option){
         option_list.children[i].classList.add("disabled");
     }
     next_btn.classList.add("show");
+}
+
+function showQuestionIndex(indexNumber, totalQuestion){
+    let tag = `<span class="badge bg-warning">${indexNumber} / ${totalQuestion}</span>`;
+    document.querySelector(".question_index").innerHTML = tag;
 }
