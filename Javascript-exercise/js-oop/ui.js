@@ -3,9 +3,12 @@ function UI(){
     this.quiz_box = document.querySelector(".quiz_box"),
     this.next_btn = document.querySelector(".next-btn"),
     this.option_list = document.querySelector(".option_list"),
-    this.score_box = document.querySelector(".score_box")
-    this.replay_btn = document.querySelector(".replay-btn")
-    this.finish_btn = document.querySelector(".finish_btn")
+    this.score_box = document.querySelector(".score_box"),
+    this.replay_btn = document.querySelector(".replay-btn"),
+    this.finish_btn = document.querySelector(".finish_btn"),
+    this.timer = document.querySelector(".timer"),
+    this.time_second = document.querySelector(".time_second"),
+    this.time_text = document.querySelector(".time_text")
 }
 
 UI.prototype.listQuestion = function(quest, questionIndex){
