@@ -7,6 +7,7 @@ let questions = [
     new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
     new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"a")
 ]
+
 const quiz = new Quiz(questions);
 
 ui.btn_start.addEventListener("click", function(){
@@ -23,7 +24,9 @@ ui.next_btn.addEventListener("click",function(){
         ui.next_btn.classList.remove("show");   
         ui.showQuestionIndex(quiz.questionIndex + 1, quiz.questions.length);
     }else{
-        alert("Quiz finished!!!")
+        ui.show_Score(quiz.trueAnswers,quiz.questions.length)
+        ui.score_box.classList.add("active");
+        ui.quiz_box.classList.remove("active");
     }
 });
 
@@ -32,6 +35,7 @@ function optionSelected(option){
     let quest = quiz.getQuestion();
 
     if(quest.checkAnswer(answer)){
+        quiz.trueAnswers += 1;
         option.classList.add("correct");
     }else{
         option.classList.add("incorrect");
@@ -42,3 +46,14 @@ function optionSelected(option){
     }
     ui.next_btn.classList.add("show");
 }
+
+ui.finish_btn.addEventListener("click", function(){
+    window.location.reload(); // Bu fonksiyon sayfa yenilenmesini ve start aşamasına dönülmesini sağlar
+})
+ui.replay_btn.addEventListener("click",function(){
+    quiz.trueAnswers = 0;
+    quiz.questionIndex = 0;
+    ui.btn_start.click();
+    ui.score_box.classList.remove("active");
+    ui.next_btn.classList.remove("show");
+})
