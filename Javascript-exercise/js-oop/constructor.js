@@ -17,9 +17,9 @@ Question.prototype.checkAnswer = function(answer){
 // initilaze object
 let questions = [
     new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
+    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"b"),
     new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
-    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
-    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c")
+    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"a")
 ]
 // console.log(quest1.questionDescribe);
 // console.log(quest1.questionAnswers);
@@ -42,8 +42,20 @@ document.querySelector(".btn-start").addEventListener("click", function(){
         document.querySelector(".quiz_box").classList.add("active");
         // console.log(listQuestion(quiz.getQuestion()));
         listQuestion(quiz.getQuestion(), quiz.questionIndex);
-        quiz.questionIndex += 1;
 });
+
+document.querySelector(".next-btn").addEventListener("click",function(){
+    if(questions.length > quiz.questionIndex + 1){
+        quiz.questionIndex += 1;
+        listQuestion(quiz.getQuestion(), quiz.questionIndex);
+        next_btn.classList.remove("show");   
+    }else{
+        alert("Quiz finished!!!")
+    }
+});
+// Global Veriable
+const option_list = document.querySelector(".option_list");
+const next_btn = document.querySelector(".next-btn");
 
 function listQuestion(quest, questionIndex){
     questionDescribe = `<span>${questionIndex+1 + "- " + quest.questionDescribe}</span>`;
@@ -58,14 +70,27 @@ function listQuestion(quest, questionIndex){
                 </div>`;
     }
     document.querySelector(".question_text").innerHTML = questionDescribe;
-    document.querySelector(".option_list").innerHTML = options;
+    option_list.innerHTML = options;
+
+    const opts = option_list.querySelectorAll(".option"); // opts -> options
+
+    for(let opt of opts){
+        opt.setAttribute("onclick", "optionSelected(this)");
+    }
 }
 
-document.querySelector(".next-btn").addEventListener("click",function(){
-    if(questions.length > quiz.questionIndex){
-        listQuestion(quiz.getQuestion(), quiz.questionIndex);
-        quiz.questionIndex += 1;
+function optionSelected(option){
+    let answer = option.querySelector("span b").textContent[0];
+    let quest = quiz.getQuestion();
+
+    if(quest.checkAnswer(answer)){
+        option.classList.add("correct");
     }else{
-        alert("Quiz finished!!!")
+        option.classList.add("incorrect");
     }
-});
+
+    for(let i=0; i < option_list.children.length; i++){
+        option_list.children[i].classList.add("disabled");
+    }
+    next_btn.classList.add("show");
+}
