@@ -15,8 +15,35 @@ Question.prototype.checkAnswer = function(answer){
 }
 
 // initilaze object
-let quest1 = new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c");
-console.log(quest1.questionDescribe);
-console.log(quest1.questionAnswers);
-console.log(quest1.checkAnswer("c"));
-console.log(quest1.checkAnswer("b"));
+let questions = [
+    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c"),
+    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c"),
+    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c"),
+    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c")
+]
+// console.log(quest1.questionDescribe);
+// console.log(quest1.questionAnswers);
+// console.log(quest1.checkAnswer("c"));
+// console.log(quest1.checkAnswer("b"));
+function Quiz(questions){
+    this.questions = questions;
+    this.questionIndex = 0;
+}
+Quiz.prototype.getQuestion = function(){
+    return this.questions[this.questionIndex];
+}
+const quiz = new Quiz(questions);
+// console.log(quiz);
+// console.log(quiz.getQuestion())
+// quiz.questionIndex += 1;
+// console.log(quiz.getQuestion())
+
+document.querySelector(".btn-start").addEventListener("click", function(){
+    if(questions.length != quiz.questionIndex){
+        document.querySelector(".quiz_box").classList.add("active");
+        console.log(quiz.getQuestion());
+        quiz.questionIndex += 1;
+    }else{
+        alert("Quiz finished!!!")
+    }
+});
