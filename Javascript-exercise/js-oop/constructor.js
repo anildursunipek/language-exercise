@@ -16,10 +16,10 @@ Question.prototype.checkAnswer = function(answer){
 
 // initilaze object
 let questions = [
-    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c"),
-    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c"),
-    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c"),
-    new Question("Which is javascript management package application?",{a:"Node.js",b:"Typsecript",c:"Npm"},"c")
+    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
+    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
+    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c"),
+    new Question("Which is javascript management package application?",{"a":"Node.js","b":"Typsecript","c":"Npm"},"c")
 ]
 // console.log(quest1.questionDescribe);
 // console.log(quest1.questionAnswers);
@@ -39,9 +39,31 @@ const quiz = new Quiz(questions);
 // console.log(quiz.getQuestion())
 
 document.querySelector(".btn-start").addEventListener("click", function(){
-    if(questions.length != quiz.questionIndex){
         document.querySelector(".quiz_box").classList.add("active");
-        console.log(quiz.getQuestion());
+        // console.log(listQuestion(quiz.getQuestion()));
+        listQuestion(quiz.getQuestion(), quiz.questionIndex);
+        quiz.questionIndex += 1;
+});
+
+function listQuestion(quest, questionIndex){
+    questionDescribe = `<span>${questionIndex+1 + "- " + quest.questionDescribe}</span>`;
+    let options= ``;
+
+    for(let answer in quest.questionAnswers){
+        let classI = quest.questionCorrectAnswer == answer ? "fas fa-check" :   "fas fa-times";
+        options += 
+                `<div class="option">
+                    <span><b>${answer}: </b>${quest.questionAnswers[answer]}</span>
+                    <div class="icon"><i class="${classI}"></i></div>
+                </div>`;
+    }
+    document.querySelector(".question_text").innerHTML = questionDescribe;
+    document.querySelector(".option_list").innerHTML = options;
+}
+
+document.querySelector(".next-btn").addEventListener("click",function(){
+    if(questions.length > quiz.questionIndex){
+        listQuestion(quiz.getQuestion(), quiz.questionIndex);
         quiz.questionIndex += 1;
     }else{
         alert("Quiz finished!!!")
