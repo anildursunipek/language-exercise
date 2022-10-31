@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES5 FUNCTİON
+        // TYPE-1
+        function greetingES5(name){
+            return "Hello " + name;
+        }
+        // TYPE-2
+        var calculateES5 = function(a,b){
+            return a+b;
+        }
+
+        console.log(greetingES5("Anil"));
+        console.log(calculateES5(5,15));
+
+        // ES6 VERSİON 
+        // ES6 sürümü ile const ve let eklenmiştir
+
+        const calculateES6 = (a,b) => a + b; // Parantezsiz tek satır tanımlaması yapılabilir. Sonuç return edilir
+        console.log(calculateES6(15,25));
+        
+        const divES6 = (a,b) => { // Parantezli birden fazla satır tanımlanabilir. Return key'i ile sonuç return edilir
+            if(b == 0){
+                alert("Divisor cannot be 0 !!");
+                return -1;
+            }
+            return a/b;
+        }
+        console.log(divES6(15,0));
+        </script>
+</body>
+</html>
