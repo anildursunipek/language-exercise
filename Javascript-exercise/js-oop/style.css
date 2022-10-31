@@ -14,7 +14,7 @@
     pointer-events: all;    
 }
 .quiz_box{
-    width: 750px;
+    width: 550px;
     opacity: 0;
     pointer-events: none;
 }
@@ -78,6 +78,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 .quiz_box header .timer{
     width: 11rem;
@@ -96,6 +97,15 @@
     border-radius: 0.5rem;
     color: #fff;
     margin-left: 0.5rem;
+}
+/* Timer Line */
+.quiz_box .timer_line{
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    /* width: 750px; */
+    height: 4px;
+    background-color: #FFD33D;
 }
 /* SCORE BOX */
 .score_box{

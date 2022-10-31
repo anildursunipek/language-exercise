@@ -8,7 +8,8 @@ function UI(){
     this.finish_btn = document.querySelector(".finish_btn"),
     this.timer = document.querySelector(".timer"),
     this.time_second = document.querySelector(".time_second"),
-    this.time_text = document.querySelector(".time_text")
+    this.time_text = document.querySelector(".time_text"),
+    this.timer_line = document.querySelector(".timer_line")
 }
 
 UI.prototype.listQuestion = function(quest, questionIndex){
