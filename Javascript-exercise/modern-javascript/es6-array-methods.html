@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numbers = [1,5,23,54,32,6,4,17,9];
+        let products = [
+            {productName: "Iphone 13", price: 12000},
+            {productName: "Iphone 12", price: 11000},
+            {productName: "Iphone 11", price: 10000},
+            {productName: "Iphone 13 Pro", price: 40000},
+        ];
+        // Filter
+        let filterFunction = (number) => number > 10;
+        let oddNumbers1 = numbers.filter(filterFunction); // Fonksiyona parametre girilmez referans olarak adresi verilir filter tüm sayılar üzerinde refereans verilen foksiyonu çalıştırır
+        let oddNumbers2 = numbers.filter((number => number % 2 == 1));
+        console.log(oddNumbers1);
+        console.log(oddNumbers2);
+
+        let phone = products.filter((product) => product.productName);
+        console.log(phone);
+        let phone2 = products.filter((product) => product.price < 12000);
+        console.log(phone2);
+        
+        // Map
+        let minus10 = numbers.map((number) => number - 10);
+        console.log(minus10);
+        let evenNumbers = numbers.map((number) => number % 2 == 0);
+        console.log(evenNumbers);
+        
+        // Find
+        console.log(products.find((product) => product.productName == "Iphone 11"));
+        
+        // FindIndex
+        console.log(products.findIndex((product) => product.productName == "Iphone 11"));
+
+    </script>
+</body>
+</html>
